@@ -16,7 +16,7 @@
 #
 apiVersion: v2
 name: apisix
-description: A Helm chart for Apache APISIX
+description: A Helm chart for Apache APISIX (Openbackend version)
 icon: https://apache.org/logos/res/apisix/apisix.png
 # A chart can be either an 'application' or a 'library' chart.
 #
