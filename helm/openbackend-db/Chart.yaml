@@ -1,6 +1,6 @@
 apiVersion: v2
 name: openbackend-db
-description: A Helm chart for openbackend-db
+description: A Helm chart for openbackend database
 
 # A chart can be either an 'application' or a 'library' chart.
 #
