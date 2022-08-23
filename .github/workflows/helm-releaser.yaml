@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'helm/**'      
+      - 'charts/**'      
 
 permissions:
   contents: read
@@ -40,6 +40,6 @@ jobs:
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.4.0
         with:
-          charts_dir: helm        
+          charts_dir: charts
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
