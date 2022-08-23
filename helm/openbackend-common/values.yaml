@@ -1,0 +1,7 @@
+# Default values for openbackend-common.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+secrets:
+  service_role_jwt_secret: "mypass"
+  anonymous_jwt_secret: "mypass"

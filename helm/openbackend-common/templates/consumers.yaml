@@ -1,0 +1,19 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixConsumer
+metadata:
+  name: servicerole
+spec:
+  authParameter:
+    jwtAuth:
+      value:
+        key: servicerole
+---
+apiVersion: apisix.apache.org/v2
+kind: ApisixConsumer
+metadata:
+  name: anonymous
+spec:
+  authParameter:
+    jwtAuth:
+      value:
+        key: anonymous
