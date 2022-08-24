@@ -3,6 +3,33 @@ entries:
   openbackend:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-08-24T01:47:09.900777646Z"
+    dependencies:
+    - name: etcd
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.3.4
+    - alias: apisix
+      name: openbackend-apisix
+      repository: file://../openbackend-apisix
+      version: 0.1.1
+    - alias: ingress-controller
+      name: openbackend-apisix-ingress
+      repository: file://../openbackend-apisix-ingress
+      version: 0.1.1
+    - name: openbackend-postgres
+      repository: file://../openbackend-postgres
+      version: 0.1.1
+    description: A Helm chart for OpenBackend
+    digest: 40c2c6ace4357b438bde5e645d621de8d9c755bccc68069f0bd6c8a1b5f59a18
+    maintainers:
+    - name: tao12345666333
+    name: openbackend
+    type: application
+    urls:
+    - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-0.1.1/openbackend-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-08-24T01:42:32.120266415Z"
     dependencies:
     - name: etcd
@@ -31,6 +58,18 @@ entries:
   openbackend-apisix:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-08-24T01:47:10.032916332Z"
+    description: A Helm chart for Apisix (Openbackend)
+    digest: eef1184d29f54ad5303851a23a576bf2f41932b8982b5dfd7067c1dd86b05136
+    maintainers:
+    - name: openbackend-team
+    name: openbackend-apisix
+    type: application
+    urls:
+    - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-apisix-0.1.1/openbackend-apisix-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-08-24T01:42:32.250178539Z"
     description: A Helm chart for Apisix (Openbackend)
     digest: 78baf49e46217948be0388f8cf2475f94d4bbcb5a0d8b95325c4d835f64471e2
@@ -42,6 +81,18 @@ entries:
     - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-apisix-0.1.0/openbackend-apisix-0.1.0.tgz
     version: 0.1.0
   openbackend-apisix-ingress:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-08-24T01:47:10.170219998Z"
+    description: A Helm chart for Apisix Ingress (OpenBackend)
+    digest: f4324e412a35dc212b3a8464fe54822b54bea771db4b2a9f91f63ac9197227b1
+    maintainers:
+    - name: openbackend-team
+    name: openbackend-apisix-ingress
+    type: application
+    urls:
+    - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-apisix-ingress-0.1.1/openbackend-apisix-ingress-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-08-24T01:42:32.391221685Z"
@@ -68,6 +119,18 @@ entries:
   openbackend-postgres:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2022-08-24T01:47:10.29570341Z"
+    description: A Helm chart for postgres (openbackend)
+    digest: 5bcdf4a55db2748ba3b6b49e63ebe7263db0065b6250a8d0494429bc62f55117
+    maintainers:
+    - name: openbackend-team
+    name: openbackend-postgres
+    type: application
+    urls:
+    - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-postgres-0.1.1/openbackend-postgres-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2022-08-24T01:42:32.519378095Z"
     description: A Helm chart for postgres (openbackend)
     digest: 2d1fc82791f1564d5c63b96c8c560f6423f3595c3d92bd085bf61db757a930d0
@@ -78,4 +141,4 @@ entries:
     urls:
     - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-postgres-0.1.0/openbackend-postgres-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-24T01:42:32.519386196Z"
+generated: "2022-08-24T01:47:10.29572221Z"
