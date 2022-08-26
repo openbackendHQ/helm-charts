@@ -4,12 +4,12 @@ dependencies:
   version: 8.3.4
 - name: openbackend-apisix
   repository: file://../openbackend-apisix
-  version: 0.1.1
+  version: 0.1.4
 - name: openbackend-apisix-ingress
   repository: file://../openbackend-apisix-ingress
-  version: 0.1.1
+  version: 0.1.4
 - name: openbackend-postgres
   repository: file://../openbackend-postgres
-  version: 0.1.1
-digest: sha256:97706f8d518e800128d9d3fe1da899dce780c23f0c914875bb88776e22c5d083
-generated: "2022-08-24T11:27:38.16739-04:00"
+  version: 0.1.4
+digest: sha256:228e862eb7b1f284a1486c593dba178036a6b1cffed210c4dcccb2210de24b56
+generated: "2022-08-26T12:02:46.549808-04:00"
