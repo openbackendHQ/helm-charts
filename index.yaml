@@ -3,6 +3,34 @@ entries:
   openbackend:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-08-26T16:03:33.359705261Z"
+    dependencies:
+    - name: etcd
+      repository: https://charts.bitnami.com/bitnami
+      version: 8.3.4
+    - alias: apisix
+      name: openbackend-apisix
+      repository: file://../openbackend-apisix
+      version: 0.1.4
+    - alias: ingress-controller
+      name: openbackend-apisix-ingress
+      repository: file://../openbackend-apisix-ingress
+      version: 0.1.4
+    - alias: postgres
+      name: openbackend-postgres
+      repository: file://../openbackend-postgres
+      version: 0.1.4
+    description: A Helm chart for OpenBackend
+    digest: f11fab10f8af592df6e04fb39ac1ffa7dd0382280460cf1fb519e0b5290c944c
+    maintainers:
+    - name: tao12345666333
+    name: openbackend
+    type: application
+    urls:
+    - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-0.1.4/openbackend-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-08-24T01:47:09.900777646Z"
     dependencies:
     - name: etcd
@@ -58,6 +86,18 @@ entries:
   openbackend-apisix:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2022-08-26T16:03:33.540044848Z"
+    description: A Helm chart for Apisix (Openbackend)
+    digest: 9e448d6a5a26f723c72ab18d1902722c188ae645346a0eba339054958d5de6d4
+    maintainers:
+    - name: openbackend-team
+    name: openbackend-apisix
+    type: application
+    urls:
+    - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-apisix-0.1.4/openbackend-apisix-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2022-08-24T01:47:10.032916332Z"
     description: A Helm chart for Apisix (Openbackend)
     digest: eef1184d29f54ad5303851a23a576bf2f41932b8982b5dfd7067c1dd86b05136
@@ -81,6 +121,18 @@ entries:
     - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-apisix-0.1.0/openbackend-apisix-0.1.0.tgz
     version: 0.1.0
   openbackend-apisix-ingress:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-08-26T16:03:33.702415118Z"
+    description: A Helm chart for Apisix Ingress (OpenBackend)
+    digest: bdc19215503eb64f0e2e2e7ff5c8b94054b8447dc4ad24ce4f047d58cd8f87e1
+    maintainers:
+    - name: openbackend-team
+    name: openbackend-apisix-ingress
+    type: application
+    urls:
+    - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-apisix-ingress-0.1.4/openbackend-apisix-ingress-0.1.4.tgz
+    version: 0.1.4
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2022-08-24T01:47:10.170219998Z"
@@ -119,6 +171,18 @@ entries:
   openbackend-postgres:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2022-08-26T16:03:33.901533029Z"
+    description: A Helm chart for postgres (openbackend)
+    digest: 1050d32af2961e842ada2f3d010ad9bc3e42fb9679faa843ada9dd79ea4de814
+    maintainers:
+    - name: openbackend-team
+    name: openbackend-postgres
+    type: application
+    urls:
+    - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-postgres-0.1.4/openbackend-postgres-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2022-08-24T01:47:10.29570341Z"
     description: A Helm chart for postgres (openbackend)
     digest: 5bcdf4a55db2748ba3b6b49e63ebe7263db0065b6250a8d0494429bc62f55117
@@ -141,4 +205,26 @@ entries:
     urls:
     - https://github.com/openbackendHQ/helm-charts/releases/download/openbackend-postgres-0.1.0/openbackend-postgres-0.1.0.tgz
     version: 0.1.0
-generated: "2022-08-24T01:47:10.29572221Z"
+  postgrest:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-08-26T16:03:34.068938731Z"
+    description: A Helm chart for Kubernetes
+    digest: a70eecf53aec61ddb4167d1e6a5f3cb16abf4d2d8df4140e85e46b47c681ea66
+    name: postgrest
+    type: application
+    urls:
+    - https://github.com/openbackendHQ/helm-charts/releases/download/postgrest-0.1.4/postgrest-0.1.4.tgz
+    version: 0.1.4
+  rustrue:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2022-08-26T16:03:34.230940598Z"
+    description: A Helm chart for Kubernetes
+    digest: 252fb5620425499d66ad28c9e9703898a866dc6c087a7fb825da8f27f5419841
+    name: rustrue
+    type: application
+    urls:
+    - https://github.com/openbackendHQ/helm-charts/releases/download/rustrue-0.1.4/rustrue-0.1.4.tgz
+    version: 0.1.4
+generated: "2022-08-26T16:03:34.230975698Z"
