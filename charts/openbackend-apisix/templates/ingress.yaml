@@ -14,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+{{- if .Values.gateway.ingress.enabled -}}
 {{- $fullName := include "apisix.fullname" . -}}
 {{- $svcPort := .Values.gateway.http.servicePort -}}
 {{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.Version }}
@@ -64,3 +65,4 @@ spec:
             {{- end }}
           {{- end }}
     {{- end }}
+  {{- end }}

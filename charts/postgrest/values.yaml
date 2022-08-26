@@ -1,0 +1,100 @@
+# Default values for postgrest.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: postgrest/postgrest
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v9.0.1"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# https://postgrest.org/en/stable/configuration.html#config-full-list
+# Using the env variable pattern
+# cf prefix name with PGRST_
+enableCustomizedConfig: false
+customizedConfig: {}
+config:
+  PGRST_ROLE_CLAIM_KEY: ''
+  PGRST_PRE_REQUEST: ''
+  PGRST_JWT_SECRET: ''
+  PGRST_DB_POOL_TIMEOUT: 10
+  PGRST_DB_POOL: 10
+  PGRST_SERVER_HOST:  3000
+  PGRST_SERVER_HOST: '0.0.0.0'
+  PGRST_DB_URI: postgres://app_user:password@db:5432/app_db
+  PGRST_DB_SCHEMAS: public
+  PGRST_DB_ANON_ROLE: app_user # In production this role should not be the same as the one used for the connection
+  PGRST_OPENAPI_SERVER_PROXY_URI: http://127.0.0.1:3000

@@ -6,110 +6,56 @@ secrets:
   service_role_jwt_secret: "mypass"
   anonymous_jwt_secret: "mypass"
 
+namespaces:
+  faasFunc:
+    name: openbackend-fn
+    role: openfaas-fn
+    inPort: 4222
+    outPort: 4222
+    linkerdInject:
+      enabled: true
+
 apisix:
-  # Enable nginx IPv6 resolver
   enableIPv6: true
-
-  # Use Pod metadata.uid as the APISIX id.
   setIDFromPodUID: false
-
   customLuaSharedDicts: []
-    # - name: foo
-    #   size: 10k
-    # - name: bar
-    #   size: 1m
   luaModuleHook:
     enabled: false
-    # extend lua_package_path to load third party code
     luaPath: ""
-    # the hook module which will be used to inject third party code into APISIX
-    # use the lua require style like: "module.say_hello"
     hookPoint: ""
-    # configmap that stores the codes
     configMapRef:
       name: ""
-      # mounts decides how to mount the codes to the container.
       mounts:
       - key: ""
         path: ""
-
   enableCustomizedConfig: false
   customizedConfig: {}
-
   image:
     repository: apache/apisix
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: 2.15.0-alpine
-
-  # Use a `DaemonSet` or `Deployment`
   kind: Deployment
-  # kind is DaemonSet,replicaCount not become effective
   replicaCount: 1
-
   podAnnotations: {}
   podSecurityContext: {}
-    # fsGroup: 2000
   securityContext: {}
-    # capabilities:
-    #   drop:
-    #   - ALL
-    # readOnlyRootFilesystem: true
-    # runAsNonRoot: true
-    # runAsUser: 1000
-
-  # See https://kubernetes.io/docs/tasks/run-application/configure-pdb/ for more details
   podDisruptionBudget:
     enabled: false
     minAvailable: 90%
     maxUnavailable: 1
-
   resources: {}
-    # We usually recommend not to specify default resources and to leave this as a conscious
-    # choice for the user. This also increases chances charts run on environments with little
-    # resources, such as Minikube. If you do want to specify resources, uncomment the following
-    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-    # limits:
-    #   cpu: 100m
-    #   memory: 128Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 128Mi
-
   nodeSelector: {}
   tolerations: []
   affinity: {}
   # If true, it will sets the anti-affinity of the Pod.
   podAntiAffinity:
     enabled: false
-
-  # timezone is the timezone where apisix uses.
-  # For example: "UTC" or "Asia/Shanghai"
-  # This value will be set on apisix container's environment variable TZ.
-  # You may need to set the timezone to be consistent with your local time zone,
-  # otherwise the apisix's logs may used to retrieve event maybe in wrong timezone.
   timezone: ""
-
-  # extraEnvVars An array to add extra env vars
-  # e.g:
-  # extraEnvVars:
-  #   - name: FOO
-  #     value: "bar"
-  #   - name: FOO2
-  #     valueFrom:
-  #       secretKeyRef:
-  #         name: SECRET_NAME
-  #         key: KEY
   extraEnvVars: []
-
   gateway:
     type: NodePort
-    # If you want to keep the client source IP, you can set this to Local.
-    # ref: https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
     externalTrafficPolicy: Cluster
-    # type: LoadBalancer
-    # annotations:
-    #   service.beta.kubernetes.io/aws-load-balancer-type: nlb
     externalIPs: []
     http:
       enabled: true
@@ -131,46 +77,28 @@ apisix:
     ingress:
       enabled: false
       annotations: {}
-        # kubernetes.io/ingress.class: nginx
-        # kubernetes.io/tls-acme: "true"
       hosts:
         - host: apisix.local
           paths: []
       tls: []
-    #  - secretName: apisix-tls
-    #    hosts:
-    #      - chart-example.local
-
   admin:
-    # Enable Admin API
     enabled: true
-    # admin service type
     type: ClusterIP
-    # loadBalancerIP: a.b.c.d
-    # loadBalancerSourceRanges:
-    #   - "143.231.0.0/16"
     externalIPs: []
-    #
     port: 9180
     servicePort: 9180
-    # Admin API support CORS response headers
     cors: true
-    # Admin API credentials
     credentials:
       admin: edd1c9f034335f136f87ad84b625c8f1
       viewer: 4054f7cf07e344346cd3f287985e76a2
-
     allow:
-      # The ip range for allowing access to Apache APISIX
       ipList:
         - 127.0.0.1/24
-
   nginx:
     workerRlimitNofile: "20480"
     workerConnections: "10620"
     workerProcesses: auto
     enableCPUAffinity: true
-
   # APISIX plugins to be enabled
   plugins:
     - api-breaker
@@ -222,13 +150,10 @@ apisix:
     - mqtt-proxy
     - ip-restriction
     - limit-conn
-
   pluginAttrs: {}
-
   extPlugin:
     enabled: false
     cmd: ["/path/to/apisix-plugin-runner/runner", "run"]
-
   # customPlugins allows you to mount your own HTTP plugins.
   customPlugins:
     enabled: false
@@ -251,19 +176,9 @@ apisix:
               path: ""
             - key: ""
               path: ""
-
   updateStrategy: {}
-    # type: RollingUpdate
-
   extraVolumes: []
-  # - name: extras
-  #   emptyDir: {}
-
   extraVolumeMounts: []
-  # - name: extras
-  #   mountPath: /usr/share/extras
-  #   readOnly: true
-
   discovery:
     enabled: false
     registry:
@@ -286,8 +201,6 @@ apisix:
         #     connect: 2000
         #     send: 2000
         #     read: 5000
-
-  # access log and error log configuration
   logs:
     enableAccessLog: true
     accessLog: "/dev/stdout"
@@ -295,7 +208,6 @@ apisix:
     accessLogFormatEscape: default
     errorLog: "/dev/stderr"
     errorLogLevel: "warn"
-
   dns:
     resolvers:
       - 127.0.0.1
@@ -306,18 +218,15 @@ apisix:
       - 8.8.8.8
     validity: 30
     timeout: 5
-
   initContainer:
     image: busybox
     tag: 1.28
-
   autoscaling:
     enabled: false
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
     targetMemoryUtilizationPercentage: 80
-
   # Custom configuration snippet.
   configurationSnippet:
     main: |
@@ -353,15 +262,25 @@ apisix:
     # @param serviceMonitor.annotations ServiceMonitor annotations
     annotations: {}
 
+  etcd:
+    service:
+      port: 2379  
+    prefix: "/apisix"
+    timeout: 30
+    auth:
+      rbac:
+        # No authentication by default
+        enabled: false
+      tls:
+        enabled: false
+
 # etcd configuration
 # use the FQDN address or the IP of the etcd
+# ref.: https://artifacthub.io/packages/helm/bitnami/etcd
 etcd:
-  host:
-    - http://etcd.host:2379  # host or ip e.g. http://172.20.128.89:2379
-  prefix: "/apisix"
-  timeout: 30
-
-  # if etcd.enabled is true, set more values of bitnami/etcd helm chart
+  replicaCount: 2
+  service:
+    port: 2379
   auth:
     rbac:
       # No authentication by default
@@ -376,7 +295,3 @@ etcd:
       verify: true
       sni: ""
 
-  service:
-    port: 2379
-
-  replicaCount: 3
