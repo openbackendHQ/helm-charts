@@ -125,6 +125,7 @@ config:
   apisix:
     # Enabling this value, overrides serviceName and serviceNamespace.
     # serviceFullname: "apisix-admin.apisix.svc.local"
+    # serviceNamespace: openbackend replace by .Release.Namespace
     serviceName: openbackend-apisix-admin
     servicePort: 9180
     adminKey: "edd1c9f034335f136f87ad84b625c8f1"
