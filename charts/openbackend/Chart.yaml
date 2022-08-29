@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.6
+version: 0.1.7
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -28,15 +28,15 @@ dependencies:
     version: 8.3.4
     repository: https://charts.bitnami.com/bitnami
   - name: openbackend-apisix
-    version: 0.1.6
+    version: 0.1.7
     repository: "file://../openbackend-apisix"
     alias: apisix
   - name: openbackend-apisix-ingress
-    version: 0.1.6
+    version: 0.1.7
     repository: "file://../openbackend-apisix-ingress"
     alias: ingress-controller
   - name: openbackend-postgres
-    version: 0.1.6
+    version: 0.1.7
     repository: "file://../openbackend-postgres"
     alias: postgres
 
