@@ -1,0 +1,39 @@
+apiVersion: apisix.apache.org/v2beta3
+kind: ApisixRoute
+metadata:
+  name: route-faas
+  namespace: {{ .Release.Namespace }}
+spec:
+  http:
+    - name: rule-faas-sync
+      match:
+        paths:
+          - /f/*
+      backends:
+        - serviceName: gateway
+          servicePort: 8080
+      plugins:
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri: ["/f/(.*)", "/function/$1"]
+---
+apiVersion: apisix.apache.org/v2beta3
+kind: ApisixRoute
+metadata:
+  name: route-faas-async
+  namespace: {{ .Release.Namespace }}
+spec:
+  http:
+    - name: rule-faas-async
+      match:
+        paths:
+          - /af/*
+      backends:
+        - serviceName: gateway
+          servicePort: 8080
+      plugins:
+        - name: proxy-rewrite
+          enable: true
+          config:
+            regex_uri: ["/af/(.*)", "/async-function/$1"]          
