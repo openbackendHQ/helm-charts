@@ -2,8 +2,23 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-namespaces:
-  function: openbackend-fn
+# namespaces:
+#   function: openbackend-fn
 
-images:
-  letter: mugiwaralabs/letterfaas:latest
+functions:
+  letter:
+    image:
+        repository: mugiwaralabs/letterfaas
+        tag: latest
+    environment:
+      LETTER_SERVICE_TRACER_NAME: "letter"
+      LETTER_SERVICE_NUM_WORKERS: "3"
+      LETTER_GRAPHQL_ENABLE_GRAPHIQL: "true"
+      LETTER_MAILER_HOST: "smtp.gmail.com"
+      LETTER_MAILER_SECURITY: "required"
+      LETTER_MAILER_USERNAME: "me@iss.am"
+      LETTER_MAILER_PASSWORD: "Mizunode@1"
+      LETTER_MAILER_PORT: "587"
+      LETTER_MAILER_KEEPALIVE: "true"
+      LETTER_MAILER_SPAM_PROTECTION: "true"
+      LETTER_MAILER_FROM: "Example Support <dont-reply@example.com>"    
